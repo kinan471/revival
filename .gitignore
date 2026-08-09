@@ -1,0 +1,7 @@
+node_modules/
+.next/
+.env*
+lib/db.json
+public/uploads/
+*.log
+.DS_Store

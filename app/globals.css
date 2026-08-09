@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+body { -webkit-tap-highlight-color: transparent; }
+
+/* إخفاء شريط التمرير للصفوف الأفقية (شرائح الفلاتر) */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+@layer components {
+  .wrap { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+
+  /* أزرار بمقاس لمس مريح + feedback عند الضغط */
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full font-bold px-5 py-3 text-sm sm:px-6 sm:text-base transition duration-300 touch-manipulation select-none; }
+  .btn-orange { @apply bg-accent-orange text-white shadow-lg shadow-orange-500/30 hover:bg-accent-dark active:scale-95; }
+  .btn-green { @apply bg-[#25D366] text-white shadow-lg shadow-green-500/30 hover:brightness-95 active:scale-95; }
+  .btn-teal { @apply bg-brand-teal text-white shadow-lg shadow-teal-900/20 hover:bg-brand-dark active:scale-95; }
+
+  .card { @apply bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300; }
+
+  /* text-base على الموبايل يمنع زوم iOS تلقائي عند التركيز */
+  .input { @apply w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal/40 focus:border-brand-teal; }
+  .label { @apply block text-sm font-bold text-slate-600 mb-1.5; }
+
+  .section-title { @apply text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-dark text-center; }
+}
