@@ -132,7 +132,23 @@ export default function Admin() {
             </div>
             <input name="name" defaultValue={edit?.name} placeholder="اسم المنتج" className={inp} required />
             <textarea name="desc" defaultValue={edit?.desc} placeholder="الوصف" rows="2" className={inp} />
-            <input name="price" defaultValue={edit?.price} type="number" placeholder="السعر ₺" className={inp} required />
+            <div className="grid grid-cols-2 gap-3">
+              <input name="price" defaultValue={edit?.price} type="number" placeholder="السعر ₺" className={inp} required />
+              <input name="oldPrice" defaultValue={edit?.oldPrice || ""} type="number" placeholder="السعر القديم ₺" className={inp} />
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <input name="condition" defaultValue={edit?.condition || ""} type="number" step="0.5" min="0" max="10" placeholder="الحالة /10" className={inp} />
+              <input name="note" defaultValue={edit?.note || ""} placeholder="ملاحظة شفافية (عيوب)" className={inp} />
+            </div>
+            <div>
+              <label className="label">♻️ REVIVAL SCORE (0–10):</label>
+              <div className="grid grid-cols-4 gap-2">
+                <input name="sc_per" defaultValue={edit?.score?.performans || ""} type="number" min="0" max="10" placeholder="أداء" className={inp + " text-center"} />
+                <input name="sc_tem" defaultValue={edit?.score?.temizlik || ""} type="number" min="0" max="10" placeholder="نظافة" className={inp + " text-center"} />
+                <input name="sc_gor" defaultValue={edit?.score?.gorunum || ""} type="number" min="0" max="10" placeholder="مظهر" className={inp + " text-center"} />
+                <input name="sc_fon" defaultValue={edit?.score?.fonksiyon || ""} type="number" min="0" max="10" placeholder="وظيفة" className={inp + " text-center"} />
+              </div>
+            </div>
             <div>
               <input name="image" type="file" accept="image/*" className={inp} />
               {edit?.img && <img src={edit.img} alt="" className="mt-2 h-20 rounded-xl object-cover" />}
@@ -142,6 +158,7 @@ export default function Admin() {
               {edit && <button type="button" onClick={() => setEdit(null)} className="btn bg-slate-100">إلغاء</button>}
             </div>
           </form>
+
           <ul className="space-y-3">
             {prods.map((p) => (
               <li key={p.id} className="card p-3 sm:p-4 flex items-center gap-3 sm:gap-4">
@@ -150,6 +167,7 @@ export default function Admin() {
                   <div className="font-bold text-xs sm:text-sm truncate">{p.name}</div>
                   <div className="text-[10px] sm:text-xs text-slate-400 truncate">
                     {brands.find((b) => b.id === p.brandId)?.name} • {cats.find((c) => c.id === p.categoryId)?.name || "بدون فئة"} • <span className="text-accent-orange font-bold">{p.price} ₺</span>
+                    {p.condition ? ` • ⭐${p.condition}/10` : ""}
                   </div>
                 </div>
                 <button onClick={() => { setEdit(p); window.scrollTo(0, 0); }} className="text-brand-teal font-bold text-lg">✏️</button>
