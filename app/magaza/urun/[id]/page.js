@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { getDB, score100 } from "../../../../lib/db";
-
+import { getDB } from "../../../../lib/db";
+import { score100 } from "../../../../lib/utils";
+\
 export default function UrunPage({ params }) {
   const { products, brands, categories, settings } = getDB();
   const p = products.find((x) => x.id === +params.id);

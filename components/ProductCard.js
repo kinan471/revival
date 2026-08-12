@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { daysAgo, score100 } from "../lib/db";
+import { daysAgo, score100 } from "../lib/utils";
 
 export default function ProductCard({ p, brand, wa }) {
   const ask = `https://wa.me/${wa}?text=${encodeURIComponent(`Merhaba! "${p.name}" ürünü hakkında sorum var.`)}`;

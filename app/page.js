@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ProductCard from "../components/ProductCard";
-import { getDB, daysAgo } from "../lib/db";
+import { getDB } from "../lib/db";
+import { daysAgo } from "../lib/utils";
 
 export default function Home() {
   const { products, brands, settings, reviews } = getDB();
