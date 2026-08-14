@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getDB } from "../../../../lib/db";
 import { score100 } from "../../../../lib/utils";
-\
+
 export default function UrunPage({ params }) {
   const { products, brands, categories, settings } = getDB();
   const p = products.find((x) => x.id === +params.id);
@@ -28,12 +28,10 @@ export default function UrunPage({ params }) {
       </div>
 
       <div className="mt-4 grid lg:grid-cols-2 gap-8">
-        {/* الصورة */}
         <div className="card p-4 sm:p-6 bg-brand-light flex items-center justify-center min-h-72">
           {p.img ? <img src={p.img} alt={p.name} className="rounded-2xl max-h-96 object-contain" /> : <div className="text-8xl">🔌</div>}
         </div>
 
-        {/* المعلومات */}
         <div>
           <div className="text-xs font-bold text-slate-400 uppercase">{brand?.name} • {cat?.name}</div>
           <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-brand-dark">{p.name}</h1>
@@ -66,7 +64,6 @@ export default function UrunPage({ params }) {
         </div>
       </div>
 
-      {/* REVIVAL SCORE + checklist */}
       <div className="mt-8 grid md:grid-cols-2 gap-6">
         <div className="card p-6">
           <h2 className="font-extrabold text-brand-dark">♻️ REVIVAL SCORE</h2>
